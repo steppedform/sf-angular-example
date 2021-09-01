@@ -4,6 +4,7 @@ import { RadioButtonsInterface } from '../interfaces/radio-buttons-interface';
 import { ShippingDateInterface } from '../interfaces/shipping-date-interface';
 import { ProductPriceInterface } from '../interfaces/product-price-interface';
 import { DateOparationsService } from '../services/utils/date-oparations.service';
+import { OrderProcessingService } from '../services/utils/order-processing.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,10 @@ export class HomeComponent implements OnInit {
   productPriceOptions: ProductPriceInterface[] = [];
   selectProductLabels: any;
 
-  constructor(private dateOperations: DateOparationsService) {}
+  constructor(
+    private dateOperations: DateOparationsService,
+    private orderProcessingService: OrderProcessingService
+  ) {}
 
   ngOnInit(): void {
     this.steps =[
