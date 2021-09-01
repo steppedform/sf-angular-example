@@ -14,8 +14,10 @@ import * as formSettings from '../../../settings';
 })
 export class HomeComponent implements OnInit {
   currentStep: number = 0;
+  orderProdPrice: string = 'US$ 118.00';
   licNumber: string = ''; // for licenses contact us hi@steppedform.com
   steps: StepsInterface[] = [];
+
   paymentOptions: RadioButtonsInterface[] = [];
   shippingDatesOptions: ShippingDateInterface[] = [];
   productPriceOptions: ProductPriceInterface[] = [];
@@ -98,4 +100,55 @@ export class HomeComponent implements OnInit {
     return { confPrice, confQuantities, confSubtotal, confShipping, confTax, confTotal }
   }
 
+  updatePrice($event: any) {
+    this.orderProcessingService.calcOrder(this.orderProdPrice, $event.detail);
+  }
+
+  startOrder() {
+    // onNextStep is defined in stepper wc, 1 is the current step (index)
+    this.goNext();
+  }
+
+  updateStepper($event: any) {
+    this.currentStep = $event.detail;
+  }
+
+  addressSub() {
+    this.goNext();
+  }
+
+  addBackSub() {
+    this.goBack();
+  }
+
+  ccSub() {
+    this.goNext();
+    // Print Data in Step 4
+    this.printCheckout();
+  }
+
+  ccBackSub() {
+    this.goBack();
+  }
+
+  shippingSelected($event: any) {
+    if ($event && $event.detail){
+      const shippingDate = new Date($event.detail).toString();
+      sessionStorage.setItem('delivery-date', shippingDate);
+    }
+  }
+
+  confirmOrder(){
+    // onNextStep is defined in stepper wc, 4 is the current step (index)
+    let payload = this.onConfirmOrder();
+    (payload) ? console.log(payload) : console.log('Transaction Canceled');
+    // Remove all saved data from sessionStorage
+    sessionStorage.clear();
+    this.goNext(); //horizontal
+  }
+
+  backOrder() {
+    // onNextStep is defined in stepper wc, 4 is the current step (index)
+    this.onSubmitOrder(0);
+  }
 }
