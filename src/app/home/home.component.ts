@@ -5,6 +5,7 @@ import { ShippingDateInterface } from '../interfaces/shipping-date-interface';
 import { ProductPriceInterface } from '../interfaces/product-price-interface';
 import { DateOparationsService } from '../services/utils/date-oparations.service';
 import { OrderProcessingService } from '../services/utils/order-processing.service';
+import * as formSettings from '../../../settings';
 
 @Component({
   selector: 'app-home',
@@ -26,52 +27,8 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.steps =[
-      {
-        stepNumber: 1,
-        stepLabel: 'Place Order',
-        activeStep: true,
-        stepHidden: false
-      },
-      {
-        stepNumber: 2,
-        stepLabel: 'Address',
-        activeStep: false,
-        stepHidden: false
-      },
-      {
-        stepNumber: 3,
-        stepLabel: 'Payment',
-        activeStep: false,
-        stepHidden: false
-      },
-      {
-        stepNumber: 4,
-        stepLabel: 'Confirm',
-        activeStep: false,
-        stepHidden: false
-      },
-      {
-        stepNumber: 5,
-        stepLabel: 'Thank You',
-        activeStep: false,
-        stepHidden: true // Step exists but will not be added in the Stepper
-      },
-    ];
-
-    this.paymentOptions = [
-      {
-        radioLabel: 'Same as shipping',
-        radioName: 'sameAddress',
-        radioModel: 'paymentAddress'
-      },
-      {
-        radioLabel: 'Different Address',
-        radioName: 'differentAddress',
-        radioModel: 'paymentAddress'
-      },
-    ];
-
+    this.steps = formSettings.steps;
+    this.paymentOptions = formSettings.paymentOptions;
     this.shippingDatesOptions = [
       {
         radioLabel: 'Today before 08:00 PM',
@@ -94,54 +51,51 @@ export class HomeComponent implements OnInit {
         radioSubTitle: 'Get US$1 reward for select digital purchases.'
       },
     ];
-
-    this.productPriceOptions = [
-    {
-        optionLabel: 1,
-        optionValue: 1,
-      },
-      {
-        optionLabel: 2,
-        optionValue: 2,
-      },
-      {
-        optionLabel: 3,
-        optionValue: 3,
-      },
-      {
-        optionLabel: 4,
-        optionValue: 4,
-      },
-      {
-        optionLabel: 5,
-        optionValue: 5,
-      },
-      {
-        optionLabel: 6,
-        optionValue: 6,
-      },
-      {
-        optionLabel: 7,
-        optionValue: 7,
-      },
-      {
-        optionLabel: 8,
-        optionValue: 8,
-      },
-      {
-        optionLabel: 9,
-        optionValue: 9,
-      },
-      {
-        optionLabel: 10,
-        optionValue: 10,
-      },
-    ];
-
+    this.productPriceOptions = formSettings.productPriceOptions;
     this.selectProductLabels = {
       selectLabel: 'QTY',
       selectName: 'product-qty',
     }
+  }
+
+  onConfirmOrder() {
+    const items = { ...sessionStorage };
+    return items;
+  }
+
+  onSubmitOrder(index: number) {
+         console.log(index);
+/*       (async () => {
+        await customElements.whenDefined('sf-stepper');
+        const horizontalStepper = document.querySelector('sf-stepper');
+        await horizontalStepper.onNextStep(index);
+      })(); */
+  }
+
+  goNext(){
+      this.currentStep++;
+      this.onSubmitOrder(this.currentStep);
+  }
+
+  goBack(){
+    this.currentStep--;
+    this.onSubmitOrder(this.currentStep);
+  }
+
+  printCheckout() {
+    const subtotal = (this.orderProcessingService.checkOutReady().subtotal) ? this.orderProcessingService.checkOutReady().subtotal : 0;
+    const shipping = (this.orderProcessingService.checkOutReady().shipping) ? this.orderProcessingService.checkOutReady().shipping : 0;
+    const tax = (this.orderProcessingService.checkOutReady().tax) ? this.orderProcessingService.checkOutReady().tax : 0;
+    const total = (this.orderProcessingService.checkOutReady().total) ? this.orderProcessingService.checkOutReady().total : 0;
+    const price = (this.orderProcessingService.checkOutReady().price) ? this.orderProcessingService.checkOutReady().price : 0;
+    const quantities = (this.orderProcessingService.checkOutReady().quantities) ? this.orderProcessingService.checkOutReady().quantities : 0;
+    const confPrice = 'US$ ' + price;
+    const confQuantities = quantities;
+    const confSubtotal = 'US$ ' + subtotal;
+    const confShipping = 'US$ ' + shipping;
+    const confTax = 'US$ ' + tax;
+    const confTotal = 'US$ ' + total;
+    return { confPrice, confQuantities, confSubtotal, confShipping, confTax, confTotal }
   }
 
 }
