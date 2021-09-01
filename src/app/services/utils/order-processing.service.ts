@@ -24,21 +24,24 @@ export class OrderProcessingService {
     sessionStorage.setItem('shipping', shipping);
     sessionStorage.setItem('tax', tax);
     sessionStorage.setItem('total', total);
-    return {subtotal, shipping, tax, total, price, quantities};
+    return { subtotal, shipping, tax, total, price, quantities };
   }
 
 calcOrder(price: string, quantity: string) {
     // Convert to number
-    var prFormat = +price.replace(/[^0-9.]+/g,'');
-    var pr: any = this.roundDecimals(prFormat);
-    var qt: any = +quantity;
+   const prFormat = +price.replace(/[^0-9.]+/g,'');
+   const pr: any = this.roundDecimals(prFormat);
+   const qt: any = +quantity;
     // Calculate subtotal
-    var num = pr * qt;
-    var subtotal: any  = this.roundDecimals(num);
+   const num = pr * qt;
+   const fsubtotal: any  = this.roundDecimals(num);
     // Save data to sessionStorage
     sessionStorage.setItem('price', pr);
     sessionStorage.setItem('quantities', qt);
-    sessionStorage.setItem('subtotal', subtotal);
-    return {sumPrice: 'US$ ' + pr, sumQuan: qt, subtotal: 'US$ ' + subtotal}
+    sessionStorage.setItem('subtotal', fsubtotal);
+    const sumPrice = 'US$ ' + pr; 
+    const sumQuan = qt; 
+    const subtotal = 'US$ ' + fsubtotal;
+    return { sumPrice, sumQuan, subtotal }
   }
 }
