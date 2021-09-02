@@ -65,13 +65,12 @@ export class HomeComponent implements OnInit {
     return items;
   }
 
-  onSubmitOrder(index: number) {
-         console.log(index);
-/*       (async () => {
-        await customElements.whenDefined('sf-stepper');
-        const horizontalStepper = document.querySelector('sf-stepper');
-        await horizontalStepper.onNextStep(index);
-      })(); */
+  async onSubmitOrder(index: number) {
+    await customElements.whenDefined('sf-stepper');
+    const horizontalStepper = document.querySelector('sf-stepper');
+    if (horizontalStepper) {
+      horizontalStepper.onNextStep(index);
+    }
   }
 
   goNext(){
