@@ -31,6 +31,10 @@ export class HomeComponent implements OnInit {
   productPriceOptions: ProductPriceInterface[] = [];
   selectProductLabels: any;
 
+  orderPrice: string = '';
+  orderQuan: string = '';
+  orderSubtotal: string = '';
+
   constructor(
     private dateOperations: DateOparationsService,
     private orderProcessingService: OrderProcessingService
@@ -107,7 +111,10 @@ export class HomeComponent implements OnInit {
   }
 
   updatePrice($event: any) {
-    this.orderProcessingService.calcOrder(this.orderProdPrice, $event.detail);
+    const result = this.orderProcessingService.calcOrder(this.orderProdPrice, $event.detail);
+    this.orderPrice = result.sumPrice;
+    this.orderQuan = result.sumQuan;
+    this.orderSubtotal = result.subtotal;
   }
 
   startOrder() {
