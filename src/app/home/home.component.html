@@ -39,13 +39,13 @@
          <sf-card-col slot="col-2">To Be Negotiated</sf-card-col>
        </sf-card>
        <sf-card dist="1">
-         <sf-submit-button id="btn-stepper-001" id-suffix="001" btn-style="primary" (click)="startOrder">Start Order</sf-submit-button>
+         <sf-submit-button id="btn-stepper-001" id-suffix="001" btn-style="primary" (click)="startOrder()">Start Order</sf-submit-button>
        </sf-card>
      </sf-card-content>  
    </sf-card-col>
   </sf-card></sf-step>
 
-  <sf-step><!--sf-full-address show-buttom="true" id-suffix="001" id="ad-01" (addressSubmitted)="addressSub()" (backBtnPressed)="addBackSub()"></sf-full-address--></sf-step>
+  <sf-step><sf-full-address show-buttom="true" id-suffix="001" id="ad-01" (addressSubmitted)="addressSub()" (backBtnPressed)="addBackSub()"></sf-full-address></sf-step>
 
   <sf-step><!--sf-full-credit-card show-buttom="true" id-suffix="001" id="cc-01" paymentAddressConfig="paymentOptions" (ccSubmitted)="ccSub()" (backBtnPressed)="ccBackSub()"></sf-full-credit-card--></sf-step>
   
