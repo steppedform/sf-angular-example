@@ -75,7 +75,8 @@
               "browserTarget": "sf-angular-example:build:production"
             },
             "development": {
-              "browserTarget": "sf-angular-example:build:development"
+              "browserTarget": "sf-angular-example:build:development",
+              "open": true
             }
           },
           "defaultConfiguration": "development"
