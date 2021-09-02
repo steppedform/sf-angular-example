@@ -73,12 +73,12 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  goNext(){
+  goNext() {
       this.currentStep++;
       this.onSubmitOrder(this.currentStep);
   }
 
-  goBack(){
+  goBack() {
     this.currentStep--;
     this.onSubmitOrder(this.currentStep);
   }
@@ -104,7 +104,6 @@ export class HomeComponent implements OnInit {
   }
 
   startOrder() {
-    // onNextStep is defined in stepper wc, 1 is the current step (index)
     this.goNext();
   }
 
@@ -122,7 +121,6 @@ export class HomeComponent implements OnInit {
 
   ccSub() {
     this.goNext();
-    // Print Data in Step 4
     this.printCheckout();
   }
 
@@ -138,16 +136,13 @@ export class HomeComponent implements OnInit {
   }
 
   confirmOrder(){
-    // onNextStep is defined in stepper wc, 4 is the current step (index)
     let payload = this.onConfirmOrder();
     (payload) ? console.log(payload) : console.log('Transaction Canceled');
-    // Remove all saved data from sessionStorage
     sessionStorage.clear();
-    this.goNext(); //horizontal
+    this.goNext();
   }
 
   backOrder() {
-    // onNextStep is defined in stepper wc, 4 is the current step (index)
     this.onSubmitOrder(0);
   }
 }
