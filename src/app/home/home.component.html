@@ -75,23 +75,27 @@
       <sf-card-content> 
        <sf-card dist="2">
          <sf-card-col slot="col-1">Items:</sf-card-col>
-         <sf-card-col slot="col-2" id="conf-quan-001">1</sf-card-col>
-       </sf-card>           
+         <sf-card-col slot="col-2" id="conf-quan-001">{{confPrice}}</sf-card-col>
+       </sf-card> 
+       <sf-card dist="2">
+        <sf-card-col slot="col-1">Quantities:</sf-card-col>
+        <sf-card-col slot="col-2" id="conf-quan-001">{{confQuantities}}</sf-card-col>
+      </sf-card>            
         <sf-card dist="2">
           <sf-card-col slot="col-1">Subtotal:</sf-card-col>
-          <sf-card-col slot="col-2" id="conf-subtotal-001"></sf-card-col>
+          <sf-card-col slot="col-2" id="conf-subtotal-001">{{confSubtotal}}</sf-card-col>
         </sf-card>
         <sf-card dist="2">
           <sf-card-col slot="col-1">Shipping:</sf-card-col>
-          <sf-card-col slot="col-2" id="conf-shipping-001"></sf-card-col>
+          <sf-card-col slot="col-2" id="conf-shipping-001">{{confShipping}}</sf-card-col>
         </sf-card>
         <sf-card dist="2">
           <sf-card-col slot="col-1">Taxes (10%):</sf-card-col>
-          <sf-card-col slot="col-2" id="conf-tax-001"></sf-card-col>
+          <sf-card-col slot="col-2" id="conf-tax-001">{{confTax}}</sf-card-col>
         </sf-card>
         <sf-card dist="2">
           <sf-card-col slot="col-1">Order Total:</sf-card-col>
-          <sf-card-col slot="col-2" id="conf-total-001"></sf-card-col>
+          <sf-card-col slot="col-2" id="conf-total-001">{{confTotal}}</sf-card-col>
         </sf-card>
         <sf-card dist="1">
           <sf-submit-button id="btn-stepper-004" id-suffix="002" btn-style="primary" (click)="confirmOrder()">Confirm Order</sf-submit-button>

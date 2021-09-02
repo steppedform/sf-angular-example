@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class DateOparationsService {
 
-  constructor() { }
+  constructor() {}
 
   dateFormatted(date: Date) {
     return (date.getMonth() + 1) + '/' +  date.getDate() + '/' +  date.getFullYear();

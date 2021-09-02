@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class OrderProcessingService {
 
-  constructor() { }
+  constructor() {}
 
  roundDecimals(value: number): number {
     return Math.round(value * 100) / 100;
@@ -20,7 +20,6 @@ export class OrderProcessingService {
     const tax: any  = this.roundDecimals(subtotal * 0.10);
     const globalTotal = Number(subtotal) + Number(shipping) + Number(tax);
     const total: any  = this.roundDecimals(globalTotal);
-    // Define is session Storage
     sessionStorage.setItem('shipping', shipping);
     sessionStorage.setItem('tax', tax);
     sessionStorage.setItem('total', total);
@@ -32,10 +31,8 @@ calcOrder(price: string, quantity: string) {
    const prFormat = +price.replace(/[^0-9.]+/g,'');
    const pr: any = this.roundDecimals(prFormat);
    const qt: any = +quantity;
-    // Calculate subtotal
    const num = pr * qt;
    const fsubtotal: any  = this.roundDecimals(num);
-    // Save data to sessionStorage
     sessionStorage.setItem('price', pr);
     sessionStorage.setItem('quantities', qt);
     sessionStorage.setItem('subtotal', fsubtotal);

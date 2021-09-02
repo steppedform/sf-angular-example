@@ -13,6 +13,14 @@ import * as formSettings from '../../../settings';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  confPrice: string = '';
+  confQuantities: any;
+  confSubtotal: string = '';
+  confShipping: string = '';
+  confTax: string = '';
+  confTotal: string = '';
+
   currentStep: number = 0;
   orderProdPrice: string = 'US$ 118.00';
   licNumber: string = ''; // for licenses contact us hi@steppedform.com
@@ -90,13 +98,12 @@ export class HomeComponent implements OnInit {
     const total = (this.orderProcessingService.checkOutReady().total) ? this.orderProcessingService.checkOutReady().total : 0;
     const price = (this.orderProcessingService.checkOutReady().price) ? this.orderProcessingService.checkOutReady().price : 0;
     const quantities = (this.orderProcessingService.checkOutReady().quantities) ? this.orderProcessingService.checkOutReady().quantities : 0;
-    const confPrice = 'US$ ' + price;
-    const confQuantities = quantities;
-    const confSubtotal = 'US$ ' + subtotal;
-    const confShipping = 'US$ ' + shipping;
-    const confTax = 'US$ ' + tax;
-    const confTotal = 'US$ ' + total;
-    return { confPrice, confQuantities, confSubtotal, confShipping, confTax, confTotal }
+    this.confPrice = 'US$ ' + price;
+    this.confQuantities = quantities;
+    this.confSubtotal = 'US$ ' + subtotal;
+    this.confShipping = 'US$ ' + shipping;
+    this.confTax = 'US$ ' + tax;
+    this.confTotal = 'US$ ' + total;
   }
 
   updatePrice($event: any) {
