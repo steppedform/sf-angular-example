@@ -47,9 +47,9 @@
 
   <sf-step><sf-full-address show-buttom="true" id-suffix="001" id="ad-01" (addressSubmitted)="addressSub()" (backBtnPressed)="addBackSub()"></sf-full-address></sf-step>
 
-  <sf-step><sf-full-credit-card show-buttom="true" id-suffix="001" id="cc-01" paymentAddressConfig="paymentOptions" (ccSubmitted)="ccSub()" (backBtnPressed)="ccBackSub()"></sf-full-credit-card></sf-step>
+  <sf-step><sf-full-credit-card show-buttom="true" id-suffix="001" id="cc-01" [paymentAddressConfig]="paymentOptions" (ccSubmitted)="ccSub()" (backBtnPressed)="ccBackSub()"></sf-full-credit-card></sf-step>
   
-  <sf-step><!--sf-card dist="3">
+  <sf-step><sf-card dist="3">
    <sf-card-col slot="col-1">
      <sf-card-title>New Balance Men's Freash Foam</sf-card-title>
      <sf-card-content>
@@ -66,7 +66,7 @@
    <sf-card-col slot="col-2">
       <sf-card-title>Shipping Date</sf-card-title>
       <sf-card-content>
-        <sf-radio-group id="shipping-dates-001" radioGroupData="shippingDatesOptions" (radioValueSelected)="shippingSelected($event)"></sf-radio-group>
+        <sf-radio-group id="shipping-dates-001" [radioGroupData]="shippingDatesOptions" (radioValueSelected)="shippingSelected($event)"></sf-radio-group>
       </sf-card-content>
    </sf-card-col>
    <sf-card-col slot="col-3">
@@ -107,7 +107,7 @@
    </sf-card>
    <sf-card dist="1" center="true"> 
      <sf-submit-button id="btn-stepper-005" id-suffix="003" (click)="backOrder()">Go Back</sf-submit-button>
-   </sf-card-->
+   </sf-card>
  </sf-step>
 
 </sf-stepper>
