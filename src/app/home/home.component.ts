@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
 
   currentStep: number = 0;
   orderProdPrice: string = 'US$ 118.00';
-  licNumber: string = ''; // for licenses contact us hi@steppedform.com
+  licNumber: string = ''; // for licenses contact us at hi@steppedform.com
   steps: StepsInterface[] = [];
 
   paymentOptions: RadioButtonsInterface[] = [];
