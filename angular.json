@@ -28,7 +28,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@steppedform/sf-ui/dist/steppedform-ui/assets",
+                "output": "/assets/"
+             }
             ],
             "styles": [
               "src/styles.scss"
@@ -97,7 +102,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@steppedform/sf-ui/dist/steppedform-ui/assets",
+                "output": "/assets/"
+             }
             ],
             "styles": [
               "src/styles.scss"
