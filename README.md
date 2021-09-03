@@ -1,5 +1,7 @@
 # StepeedForm Angular Example
 
+![SF Angular Example](./src/assets/preview.png "SteppedForm")
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
 
 This is a checkout example using [@steppedform/sf-ui](https://github.com/steppedform/sf-ui)
