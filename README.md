@@ -1,6 +1,6 @@
 # StepeedForm Angular Example
 
-![SF Angular Example](./src/assets/preview.png "SteppedForm")
+![SF Angular Example](./src/assets/preview2.png "SteppedForm")
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
 
@@ -55,6 +55,14 @@ body {
     background-color: #000;
 }
 ```
+
+* To switch theme define `data-theme` in `body` (current options are `dark` and `light`):
+
+```bash
+<body data-theme="light"> 
+```
+
+![SF Dark Theme](./src/assets/preview.png "SteppedForm")
 
 ## General configuration for this example:
 
