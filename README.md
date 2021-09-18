@@ -35,7 +35,7 @@ No need to import `modules` in current version.
 ```bash
 import { defineCustomElements } from '@steppedform/sf-ui/loader';
 
-defineCustomElements();
+defineCustomElements(window);
 ```
 
 * To be able to use `autocomplete` (cities, states and countries) in Angular, we need to specify the `assets` in the `angular.json`:
@@ -48,7 +48,21 @@ defineCustomElements();
 }
 ```
 
-* Modify your `background` color in `styles.scss`:
+* Reactive forms or template driven forms in Angular cannot stablish a clear two way binding communication with the shadow dom. However, input changes can be detected using the `(input)` event such as:
+
+```bash
+<sf-input [sfLabel]="label" [sfId]="id" [sfRequired]="true" (input)="onInputChange('firstNameForm', $event)"></sf-input>
+```
+
+* The method to detect value changes could be as simple as:
+
+```bash
+  onInputChange(inputName, event) {
+    this.contactForm[inputName] = event.target.shadowRoot.getElementById(inputName).value;
+  }
+```
+
+* Depending on your theme selected, you can change your `background` color in `styles.scss`:
 
 ```bash
 body {
@@ -59,7 +73,7 @@ body {
 * To switch theme define `data-theme` in `body` (current options are `dark` and `light`):
 
 ```bash
-<body data-theme="light"> 
+<body data-theme="dark"> 
 ```
 
 ![SF Dark Theme](./src/assets/preview.png "SteppedForm")

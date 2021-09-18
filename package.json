@@ -1,6 +1,6 @@
 {
   "name": "sf-angular-example",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
@@ -18,7 +18,7 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
-    "@steppedform/sf-ui": "^1.1.1",
+    "@steppedform/sf-ui": "^1.1.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
